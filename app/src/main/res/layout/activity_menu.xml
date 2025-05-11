@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="16dp"
+    tools:context=".mainMenu"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="16dp">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addButton" />
+            <!--(Geeks For Geeks, 2025)-->
+
+            <Button
+                android:id="@+id/per"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Populate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputValue" />
+            <!--(Android, 2025)-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recent Purchases"
+                android:textSize="25dp"/>
+            <!--(Geeks For Geeks, 2025)-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20dp"
+                android:layout_gravity="end"
+                android:id="@+id/purch1"/>
+            <!--(Geeks For Geeks, 2025)-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20dp"
+                android:layout_gravity="end"
+                android:id="@+id/purch2"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20dp"
+                android:layout_gravity="end"
+                android:id="@+id/purch3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recent Income"
+                android:textSize="25dp"/>
+            <!--(Geeks For Geeks, 2025)-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20dp"
+                android:layout_gravity="end"
+                android:id="@+id/income1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20dp"
+                android:layout_gravity="end"
+                android:id="@+id/income2"/>
+            <!--(Geeks For Geeks, 2025)-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20dp"
+                android:layout_gravity="end"
+                android:id="@+id/income3"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Goals"
+                android:textSize="25dp"/>
+            <!--(Android, 2025)-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20dp"
+                android:layout_gravity="end"
+                android:id="@+id/goal1"/>
+            <!--(Geeks For Geeks, 2025)-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20dp"
+                android:layout_gravity="end"
+                android:id="@+id/goal2"/>
+            <!--(Android, 2025)-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20dp"
+                android:layout_gravity="end"
+                android:id="@+id/goal3"/>
+            <!--(Geeks For Geeks, 2025)-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/goals"
+                    android:layout_width="85dp"
+                    android:layout_height="wrap_content"
+                    android:text="Goals"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputValue" />
+                <!--(Android, 2025)-->
+
+                <Button
+                    android:id="@+id/income"
+                    android:layout_width="96dp"
+                    android:layout_height="wrap_content"
+                    android:text="Income"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputValue" />
+                <!--(Android, 2025)-->
+
+
+                <Button
+                    android:id="@+id/expense"
+                    android:layout_width="103dp"
+                    android:layout_height="wrap_content"
+                    android:text="Expense"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputValue" />
+                <!--(Android, 2025)-->
+
+                <Button
+                    android:id="@+id/stats"
+                    android:layout_width="81dp"
+                    android:layout_height="wrap_content"
+                    android:text="Stats"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputValue" />
+                <!--(Android, 2025)-->
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
