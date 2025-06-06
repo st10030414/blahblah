@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Goals">
+    tools:context=".Target">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User Goals"
+                android:text="User Wish List"
                 android:textSize="40dp"/>
             <!--(Geeks For Geeks, 2025)-->
 
@@ -34,16 +34,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Goal Month"
+                    android:text="User Wish"
                     android:textSize="20dp"
                     android:layout_marginEnd="60dp"/>
                 <!--(Geeks For Geeks, 2025)-->
 
                 <EditText
-                    android:id="@+id/goalMonth"
+                    android:id="@+id/tarName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="3"
+                    android:hint="Trip to Miami"
                     android:minHeight="48dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +59,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Max Goal"
+                    android:text="Wish Price"
                     android:textSize="20dp"
                     android:layout_marginEnd="60dp"/>
                 <!--(Geeks For Geeks, 2025)-->
@@ -72,7 +72,7 @@
                 <!--(Geeks For Geeks, 2025)-->
 
                 <EditText
-                    android:id="@+id/goalMax"
+                    android:id="@+id/tarPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="4000"
@@ -83,40 +83,10 @@
                 <!--(Android, 2025)-->
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Min Goal"
-                    android:textSize="20dp"
-                    android:layout_marginEnd="60dp"/>
-                <!--(Geeks For Geeks, 2025)-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="R"
-                    android:textSize="20dp"/>
-                <!--(Geeks For Geeks, 2025)-->
-
-                <EditText
-                    android:id="@+id/goalMin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="4000"
-                    android:inputType="numberDecimal"
-                    android:minHeight="48dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/expName" />
-                <!--(Android, 2025)-->
-            </LinearLayout>
 
             <Button
-                android:id="@+id/addGoal"
+                android:id="@+id/addTar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="150dp"

@@ -9,12 +9,17 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.widget.Button
 import android.widget.Toast
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
 
 class Stats : AppCompatActivity() {
 
     lateinit var month1 : EditText
     lateinit var month2 : EditText
     lateinit var pBtn : Button
+    val database = Firebase.database
+    val incRef = database.getReference("Income_Entry")
+    val expRef = database.getReference("Expense_Entry")
     //(Android, 2025)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +35,9 @@ class Stats : AppCompatActivity() {
                 val end = month2.text.toString().toFloat()
                 if (start > 0 && start < 13 && end > 0 && end < 13 && start <= end)
                 {
-                    findViewById<TextView>(R.id.grid).text = gatherData(start, end)
+                    gatherData(start, end) { result ->
+                        findViewById<TextView>(R.id.grid).text = result
+                    }
                 }
                 else
                 {
@@ -47,9 +54,12 @@ class Stats : AppCompatActivity() {
         }
     }
 
-    private fun gatherData(first: Float, second: Float) : String{
+    private fun gatherData(first: Float, second: Float, callback: (String) -> Unit){
         val collect = StringBuilder()
+        val incomeList = mutableListOf<String>()
+        val expenseList = mutableListOf<String>()
         //(Kotlin, 2025)
+        /*
         collect.append("Income\n\n")
 
 
@@ -86,6 +96,71 @@ class Stats : AppCompatActivity() {
         }
         return collect.toString()
 
+         */
+
+        incRef.get().addOnSuccessListener { incomeSnapshot ->
+            for (inc in incomeSnapshot.children)
+            {
+                val month = inc.child("month").getValue(Float::class.java) ?: continue
+
+                if (month >= first && month <= second)
+                {
+                    val name = inc.child("name").getValue(String::class.java) ?: ""
+                    val price = inc.child("cost").getValue(Float::class.java) ?: 0f
+                    val day = inc.child("day").getValue(Float::class.java) ?: 0f
+                    val year = inc.child("year").getValue(Float::class.java) ?: 0f
+                    val desc = inc.child("description").getValue(String::class.java) ?: ""
+                    val cate = inc.child("category").getValue(String::class.java) ?: ""
+
+                    incomeList.add("""
+                        Name: $name
+                        Price: R$price
+                        Date: $day-$month-$year
+                        Description: $desc
+                        Category: $cate
+                    """.trimIndent())
+                }
+            }
+            expRef.get().addOnSuccessListener { expenseSnapshot ->
+                for (exp in expenseSnapshot.children)
+                {
+                    val month = exp.child("month").getValue(Float::class.java) ?: continue
+
+                    if (month >= first && month <= second)
+                    {
+                        val name = exp.child("name").getValue(String::class.java) ?: ""
+                        val price = exp.child("cost").getValue(Float::class.java) ?: 0f
+                        val day = exp.child("day").getValue(Float::class.java) ?: 0f
+                        val year = exp.child("year").getValue(Float::class.java) ?: 0f
+                        val desc = exp.child("description").getValue(String::class.java) ?: ""
+                        val cate = exp.child("category").getValue(String::class.java) ?: ""
+
+                        expenseList.add("""
+                        Name: $name
+                        Price: R$price
+                        Date: $day-$month-$year
+                        Description: $desc
+                        Category: $cate
+                    """.trimIndent())
+                    }
+                }
+
+                collect.append("Income\n\n")
+                incomeList.forEach { collect.append(it).append("\n\n") }
+
+                collect.append("Expenses\n\n")
+                expenseList.forEach { collect.append(it).append("\n") }
+
+                callback(collect.toString())
+            }.addOnFailureListener {
+                collect.append("Income\n\n")
+                incomeList.forEach { collect.append(it).append("\n") }
+                collect.append("Expenses\n\nFailed to load expenses")
+                callback(collect.toString())
+            }
+        }.addOnFailureListener {
+            callback("Failed to load income data.")
+        }
     }
 
 

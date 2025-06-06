@@ -6,6 +6,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
+
 //(Geeks For Geeks, 2025)
 
 class Entry : AppCompatActivity() {
@@ -18,6 +21,8 @@ class Entry : AppCompatActivity() {
     private lateinit var expenseYear: EditText
     private lateinit var expenseDesc: EditText
     private lateinit var expenseCate: EditText
+    private val database = Firebase.database
+    private val myRef = database.getReference("Expense_Entry")
     //(Geeks For Geeks, 2025)
 
     private lateinit var expButton: Button
@@ -44,15 +49,16 @@ class Entry : AppCompatActivity() {
             try
             {
                 val  eName= expenseName.text.toString()
-                val eCost = expenseCost.text.toString().toFloat()
-                val  eDate= expenseDay.text.toString()
-                val  eStart= expenseMonth.text.toString()
-                val  eEnd= expenseYear.text.toString()
+                val eCost = expenseCost.text.toString().toFloatOrNull()
+                val  eDay= expenseDay.text.toString().toFloatOrNull()
+                val  eMonth= expenseMonth.text.toString().toFloatOrNull()
+                val  eYear= expenseYear.text.toString().toFloatOrNull()
                 val  eDesc= expenseDesc.text.toString()
                 val  eCate= expenseCate.text.toString()
                 //(Geeks For Geeks, 2025)
-                if (eName.isBlank() || eDate.isBlank() ||
-                    eStart.isBlank() || eEnd.isBlank() || eDesc.isBlank() || eCate.isBlank())
+                if (eName.isBlank() || eDay == null ||
+                    eMonth == null || eYear == null ||
+                    eDesc.isBlank() || eCate.isBlank() || eCost == null)
                 //(W3Schools, 2025)
                 {
                     Toast.makeText(this, "Empty inputs detected!", Toast.LENGTH_SHORT).show()
@@ -60,10 +66,23 @@ class Entry : AppCompatActivity() {
                 else
                 //(W3Schools, 2025)
                 {
-                    Storage.expense.add(Expense(name = eName, price = eCost, day = eDate, month = eStart, year = eEnd, description = eDesc, category = eCate))
+
+                    val newExp = mapOf(
+                        "name" to eName,
+                        "cost" to eCost,
+                        "day" to eDay,
+                        "month" to eMonth,
+                        "year" to eYear,
+                        "description" to eDesc,
+                        "category" to eCate
+                    )
+                    myRef.push().setValue(newExp).addOnSuccessListener {
+                        Toast.makeText(this, "User details successfully entered!", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "User details successfully entered!", Toast.LENGTH_SHORT).show()
+                    }
                     val intent = Intent(this, mainMenu::class.java)
                     startActivity(intent)
-                    //(Geeks For Geeks, 2025)
                 }
 
             }

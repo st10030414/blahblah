@@ -11,7 +11,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
 
@@ -27,32 +27,38 @@
                 android:layout_height="250dp"
                 android:layout_margin="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addButton" />
+                android:layout_marginTop="24dp"/>
             <!--(Geeks For Geeks, 2025)-->
 
-            <Button
-                android:id="@+id/per"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Populate"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputValue" />
-            <!--(Android, 2025)-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Recent Purchases"
-                android:textSize="25dp"/>
+                android:textSize="25sp"/>
             <!--(Geeks For Geeks, 2025)-->
+
+            <Button
+                android:id="@+id/expense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:layout_gravity="end"/>
+            <!--(Android, 2025)-->
+        </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="None"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_gravity="end"
                 android:id="@+id/purch1"/>
             <!--(Geeks For Geeks, 2025)-->
@@ -60,35 +66,54 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="None"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_gravity="end"
                 android:id="@+id/purch2"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="None"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_gravity="end"
                 android:id="@+id/purch3"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recent Income"
+                    android:layout_weight="1"
+                    android:textSize="25sp"/>
+                <!--(Geeks For Geeks, 2025)-->
+
+                <Button
+                    android:id="@+id/income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:layout_gravity="end"/>
+                <!--(Android, 2025)-->
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recent Income"
-                android:textSize="25dp"/>
-            <!--(Geeks For Geeks, 2025)-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="None"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_gravity="end"
                 android:id="@+id/income1"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="None"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_gravity="end"
                 android:id="@+id/income2"/>
             <!--(Geeks For Geeks, 2025)-->
@@ -96,22 +121,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="None"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_gravity="end"
                 android:id="@+id/income3"/>
 
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Goals"
-                android:textSize="25dp"/>
-            <!--(Android, 2025)-->
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Goals"
+                    android:textSize="25sp"/>
+                <!--(Android, 2025)-->
+
+                <Button
+                    android:id="@+id/goals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:layout_gravity="end"/>
+                <!--(Android, 2025)-->
+
+            </LinearLayout>
+
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="None"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_gravity="end"
                 android:id="@+id/goal1"/>
             <!--(Geeks For Geeks, 2025)-->
@@ -119,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="None"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_gravity="end"
                 android:id="@+id/goal2"/>
             <!--(Android, 2025)-->
@@ -127,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="None"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_gravity="end"
                 android:id="@+id/goal3"/>
             <!--(Geeks For Geeks, 2025)-->
@@ -135,46 +180,70 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Targets"
+                    android:textSize="25sp"/>
+                <!--(Android, 2025)-->
 
                 <Button
-                    android:id="@+id/goals"
+                    android:id="@+id/targets"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
-                    android:text="Goals"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inputValue" />
-                <!--(Android, 2025)-->
-
-                <Button
-                    android:id="@+id/income"
-                    android:layout_width="96dp"
-                    android:layout_height="wrap_content"
-                    android:text="Income"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inputValue" />
-                <!--(Android, 2025)-->
-
-
-                <Button
-                    android:id="@+id/expense"
-                    android:layout_width="103dp"
-                    android:layout_height="wrap_content"
-                    android:text="Expense"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inputValue" />
-                <!--(Android, 2025)-->
-
-                <Button
-                    android:id="@+id/stats"
-                    android:layout_width="81dp"
-                    android:layout_height="wrap_content"
-                    android:text="Stats"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inputValue" />
+                    android:text="Add"
+                    android:layout_gravity="end"/>
                 <!--(Android, 2025)-->
 
             </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20sp"
+                android:layout_gravity="end"
+                android:id="@+id/tar1"/>
+            <!--(Geeks For Geeks, 2025)-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20sp"
+                android:layout_gravity="end"
+                android:id="@+id/tar2"/>
+            <!--(Android, 2025)-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="None"
+                android:textSize="20sp"
+                android:layout_gravity="end"
+                android:id="@+id/tar3"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp">
+
+                <Button
+                    android:id="@+id/stats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stats"/>
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
     </ScrollView>

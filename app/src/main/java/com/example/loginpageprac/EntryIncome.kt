@@ -11,6 +11,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
 import java.util.Calendar
 
 class EntryIncome : AppCompatActivity() {
@@ -22,6 +24,8 @@ class EntryIncome : AppCompatActivity() {
     private lateinit var incomeDesc: EditText
     private lateinit var incomeCate: EditText
     private lateinit var incButton: Button
+    private val database = Firebase.database
+    private val myRef = database.getReference("Income_Entry")
     //(Geeks FOr Geeks, 2025)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,29 +44,48 @@ class EntryIncome : AppCompatActivity() {
         incButton.setOnClickListener {
             try {
                 val iName = incomeName.text.toString()
-                val iCost = incomeCost.text.toString().toFloat()
-                val iDay= incomeDay.toString()
-                val iMonth= incomeMonth.text.toString()
+                val iCost = incomeCost.text.toString().toFloatOrNull()
+                val iDay= incomeDay.text.toString().toFloatOrNull()
+                val iMonth= incomeMonth.text.toString().toFloatOrNull()
                 //(Android, 2025)
-                val iYear= incomeYear.text.toString()
+                val iYear= incomeYear.text.toString().toFloatOrNull()
                 val iDesc= incomeDesc.text.toString()
                 val iCate= incomeCate.text.toString()
                 //(Geeks FOr Geeks, 2025)
 
-                if(iName.isBlank() || iDay.isBlank() ||
-                    iMonth.isBlank() || iYear.isBlank() || iDesc.isBlank() || iCate.isBlank())
+                if(iName.isBlank() || iDay == null ||
+                    iMonth == null || iYear == null ||
+                    iDesc.isBlank() || iCate.isBlank() || iCost == null)
                 {
                     Toast.makeText(this, "Empty inputs detected!", Toast.LENGTH_SHORT).show()
                 }
                 else
                 //(W3Schools, 2025)
                 {
-                    //Storage.income.add(Income(name = iName, price = iCost))
+                    /*
                     Storage.income.add(Income(name = iName, price = iCost, day = iDay, month = iMonth, year = iYear, description = iDesc, category = iCate))
                     //(Android, 2025)
                     val intent = Intent(this, mainMenu::class.java)
                     startActivity(intent)
                     //(Geeks FOr Geeks, 2025)
+                     */
+
+                    val newExp = mapOf(
+                        "name" to iName,
+                        "cost" to iCost,
+                        "day" to iDay,
+                        "month" to iMonth,
+                        "year" to iYear,
+                        "description" to iDesc,
+                        "category" to iCate
+                    )
+                    myRef.push().setValue(newExp).addOnSuccessListener {
+                        Toast.makeText(this, "User details successfully entered!", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "User details successfully entered!", Toast.LENGTH_SHORT).show()
+                    }
+                    val intent = Intent(this, mainMenu::class.java)
+                    startActivity(intent)
                 }
                 //(W3Schools, 2025)
             }

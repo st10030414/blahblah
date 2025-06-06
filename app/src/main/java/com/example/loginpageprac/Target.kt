@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,50 +12,39 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
 import com.google.firebase.database.database
 
-class Goals : AppCompatActivity() {
-    private lateinit var goalMonth: EditText
-    private lateinit var goalMax: EditText
-    private lateinit var goalMin: EditText
-    private lateinit var goalBtn: Button
+class Target : AppCompatActivity() {
+    private lateinit var targetName: EditText
+    private lateinit var targetPrice: EditText
+    private lateinit var tarBtn: Button
     private val database = Firebase.database
-    private val myRef = database.getReference("Goals_Entry")
+    private val myRef = database.getReference("Target_Entry")
     //(Geeks For Geeks, 2025)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_goals)
+        setContentView(R.layout.activity_target)
 
-        goalMonth = findViewById(R.id.goalMonth)
-        goalMax = findViewById(R.id.goalMax)
-        goalMin = findViewById(R.id.goalMin)
-        goalBtn = findViewById(R.id.addGoal)
+        targetName = findViewById(R.id.tarName)
+        targetPrice = findViewById(R.id.tarPrice)
+        tarBtn = findViewById(R.id.addTar)
         //(Geeks For Geeks, 2025)
         //(Android, 2025)
 
-        goalBtn.setOnClickListener{
-            val gMonth = goalMonth.text.toString().toFloatOrNull()
-            val gMax = goalMax.text.toString().toFloatOrNull()
-            val gMin = goalMin.text.toString().toFloatOrNull()
+        tarBtn.setOnClickListener{
+            val tName = targetName.text.toString()
+            val tPrice = targetPrice.text.toString().toFloatOrNull()
             //(Geeks For Geeks, 2025)
 
-            if (gMonth == null || gMax == null || gMin == null || gMax < gMin)
+            if (tName.isEmpty() || tPrice == null)
             {
                 Toast.makeText(this, "Invalid or empty inputs detected!", Toast.LENGTH_SHORT).show()
             }
             //(W3Schools, 2025)
             else
             {
-                /*
-                Storage.goal.add(GoalHolder(gName, gMax, gMin))
-                val intent = Intent(this, mainMenu::class.java)
-                startActivity(intent)
-                //(Geeks For Geeks, 2025)
-                 */
-
                 val newExp = mapOf(
-                    "month" to gMonth,
-                    "max_cost" to gMax,
-                    "min_cost" to gMin
+                    "name" to tName,
+                    "cost" to tPrice
                 )
                 myRef.push().setValue(newExp).addOnSuccessListener {
                     Toast.makeText(this, "User details successfully entered!", Toast.LENGTH_SHORT).show()
