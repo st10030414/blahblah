@@ -5,62 +5,89 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_gold"
+    android:elevation="4dp"
+    android:padding="16dp"
     tools:context=".Target">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:background="@color/green">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingTop="16dp"
+            android:gravity="center_vertical"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="User Wish List"
-                android:textSize="40dp"/>
+                android:gravity="center"
+                android:text="Personal Targets"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:shadowColor="@color/dark_gold"
+                android:shadowDy="2"
+                android:shadowDx="2"
+                android:shadowRadius="3"
+                android:paddingBottom="16dp"
+                android:textSize="40sp"/>
             <!--(Geeks For Geeks, 2025)-->
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
-                    android:text="User Wish"
-                    android:textSize="20dp"
+                    android:gravity="start"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:layout_marginEnd="60dp"/>
                 <!--(Geeks For Geeks, 2025)-->
 
                 <EditText
                     android:id="@+id/tarName"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_gold"
+                    android:backgroundTint="@color/gold"
                     android:hint="Trip to Miami"
-                    android:minHeight="48dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:minHeight="48dp"/>
                 <!--(Android, 2025)-->
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp">
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
-                    android:text="Wish Price"
-                    android:textSize="20dp"
+                    android:gravity="start"
+                    android:text="Price"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:layout_marginEnd="60dp"/>
                 <!--(Geeks For Geeks, 2025)-->
 
@@ -68,18 +95,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="R"
+                    android:textColor="@color/white"
                     android:textSize="20dp"/>
                 <!--(Geeks For Geeks, 2025)-->
 
                 <EditText
                     android:id="@+id/tarPrice"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_gold"
+                    android:backgroundTint="@color/gold"
                     android:hint="4000"
-                    android:inputType="numberDecimal"
-                    android:minHeight="48dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/expName" />
+                    android:inputType="number"
+                    android:minHeight="48dp"/>
                 <!--(Android, 2025)-->
             </LinearLayout>
 
@@ -87,13 +117,25 @@
 
             <Button
                 android:id="@+id/addTar"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:backgroundTint="@color/gold"
+                android:text="Add Target"/>
+
+            <Button
+                android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
-                android:layout_marginTop="18dp"
-                android:text="Add Goal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputValue" />
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:backgroundTint="@color/dark_gold"
+                android:text="Cancel"/>
             <!--(Android, 2025)-->
 
         </LinearLayout>

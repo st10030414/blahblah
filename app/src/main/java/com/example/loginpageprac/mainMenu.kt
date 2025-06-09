@@ -1,11 +1,14 @@
 package com.example.loginpageprac
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -13,6 +16,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.google.firebase.Firebase
 import com.google.firebase.database.database
+import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlin.math.max
 
 class mainMenu : AppCompatActivity() {
@@ -23,6 +27,7 @@ class mainMenu : AppCompatActivity() {
     private lateinit var statis: Button
     private lateinit var gBtn: Button
     private lateinit var tBtn: Button
+    private var backPressedCheck = false
     private val database = Firebase.database
     private val myRef = database.getReference("Goals_Entry")
     private val myRef2 = database.getReference("Expense_Entry")
@@ -80,6 +85,11 @@ class mainMenu : AppCompatActivity() {
             startActivity(intent)
         }
         //(Geeks For Geeks, 2025)
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed(){
+                backPushed()
+            }
+        })
 
     }
 
@@ -162,16 +172,16 @@ class mainMenu : AppCompatActivity() {
     private fun assignGoal(){
         myRef.limitToLast(3).get().addOnSuccessListener { dataSnapshot ->
             val getGoals = dataSnapshot.children.mapNotNull { snap ->
-                val goalName = snap.child("month").getValue(Float::class.java)
+                val goalName = snap.child("month").getValue(Int::class.java)
                 val goalMax = snap.child("max_cost").getValue(Float::class.java)
                 if (goalName != null && goalMax != null) {
                     goalName to goalMax
                 } else null
             }.reversed()
 
-            findViewById<TextView>(R.id.goal1).text = getGoals.getOrNull(0)?.let { "Month:${it.first}: R${it.second}"} ?: "None"
-            findViewById<TextView>(R.id.goal2).text = getGoals.getOrNull(1)?.let { "Month:${it.first}: R${it.second}"} ?: "None"
-            findViewById<TextView>(R.id.goal3).text = getGoals.getOrNull(2)?.let { "Month:${it.first}: R${it.second}"} ?: "None"
+            findViewById<TextView>(R.id.goal1).text = getGoals.getOrNull(0)?.let { "Month:${it.first} R${it.second}"} ?: "None"
+            findViewById<TextView>(R.id.goal2).text = getGoals.getOrNull(1)?.let { "Month:${it.first} R${it.second}"} ?: "None"
+            findViewById<TextView>(R.id.goal3).text = getGoals.getOrNull(2)?.let { "Month:${it.first} R${it.second}"} ?: "None"
 
         }.addOnFailureListener {
         }
@@ -200,7 +210,7 @@ class mainMenu : AppCompatActivity() {
         pieChart.isDrawHoleEnabled = true
         //(Geeks For Geeks, 2025)
         //(see How to create pie chart | MP Android Chart | Android Studio 2024, 2023)
-        pieChart.setUsePercentValues(true)
+        pieChart.setUsePercentValues(false)
         pieChart.setEntryLabelTextSize(15f)
         //(Geeks For Geeks, 2025)
     }
@@ -208,19 +218,38 @@ class mainMenu : AppCompatActivity() {
         val dataSet = PieDataSet(Storage.entries, "Data")
         //(Geeks For Geeks, 2025)
         dataSet.setColors(
-            intArrayOf(
-                android.graphics.Color.RED,
-                android.graphics.Color.GREEN,
-                android.graphics.Color.BLUE,
-                android.graphics.Color.YELLOW,
-                android.graphics.Color.MAGENTA
-            ), 255
-            //(see How to create pie chart | MP Android Chart | Android Studio 2024, 2023)
+            listOf(
+                Color.parseColor("#F4D58D"), // Soft Gold
+                Color.parseColor("#8ED2C9")  // Muted Teal
+            )
         )
-        //(Geeks For Geeks, 2025)
+
         val data = PieData(dataSet)
+        data.setValueTextSize(14f)
+        data.setValueTextColor(Color.BLACK)
+
+        data.setValueFormatter(object : ValueFormatter() {
+            override fun getFormattedValue(value: Float): String {
+                return "R${String.format("%.2f", value)}"
+            }
+        })
+
         pieChart.data = data
+        pieChart.setUsePercentValues(false) // show actual totals, not percentages
         pieChart.invalidate()
-        //(Geeks For Geeks, 2025)
+    }
+
+    private fun backPushed(){
+        if (backPressedCheck){
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        } else
+        {
+            backPressedCheck = true
+            Toast.makeText(this, "Press again to sign out.", Toast.LENGTH_SHORT).show()
+            android.os.Handler(mainLooper).postDelayed({
+                backPressedCheck = false}, 2000)
+        }
     }
 }

@@ -20,6 +20,7 @@ class Goals : AppCompatActivity() {
     private lateinit var goalBtn: Button
     private val database = Firebase.database
     private val myRef = database.getReference("Goals_Entry")
+    lateinit var backBtn : Button
     //(Geeks For Geeks, 2025)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,11 +31,12 @@ class Goals : AppCompatActivity() {
         goalMax = findViewById(R.id.goalMax)
         goalMin = findViewById(R.id.goalMin)
         goalBtn = findViewById(R.id.addGoal)
+        backBtn = findViewById(R.id.back)
         //(Geeks For Geeks, 2025)
         //(Android, 2025)
 
         goalBtn.setOnClickListener{
-            val gMonth = goalMonth.text.toString().toFloatOrNull()
+            val gMonth = goalMonth.text.toString().toIntOrNull()
             val gMax = goalMax.text.toString().toFloatOrNull()
             val gMin = goalMin.text.toString().toFloatOrNull()
             //(Geeks For Geeks, 2025)
@@ -46,12 +48,6 @@ class Goals : AppCompatActivity() {
             //(W3Schools, 2025)
             else
             {
-                /*
-                Storage.goal.add(GoalHolder(gName, gMax, gMin))
-                val intent = Intent(this, mainMenu::class.java)
-                startActivity(intent)
-                //(Geeks For Geeks, 2025)
-                 */
 
                 val newExp = mapOf(
                     "month" to gMonth,
@@ -67,6 +63,11 @@ class Goals : AppCompatActivity() {
                 startActivity(intent)
             }
             //(W3Schools, 2025)
+        }
+
+        backBtn.setOnClickListener {
+            val intent = Intent(this, mainMenu::class.java)
+            startActivity(intent)
         }
 
     }

@@ -5,15 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_gold"
+    android:elevation="4dp"
+    android:padding="16dp"
     tools:context=".Stats">
 
     <ScrollView
-        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/green">
         <!--(Geeks For Geeks, 2025)-->
 
         <LinearLayout
@@ -24,78 +24,141 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Period Selection"
-                android:textSize="40dp" />
+                android:gravity="center"
+                android:text="Statistics"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:shadowColor="@color/dark_gold"
+                android:shadowDy="2"
+                android:shadowDx="2"
+                android:shadowRadius="3"
+                android:paddingBottom="16dp"
+                android:textSize="40sp"/>
             <!--(Geeks For Geeks, 2025)-->
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="106dp"
                     android:layout_height="wrap_content"
+                    android:gravity="start"
                     android:text="Start Month"
-                    android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:layout_marginEnd="60dp"/>
                 <!--(Geeks For Geeks, 2025)-->
                 <EditText
                     android:id="@+id/month1"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_gold"
+                    android:backgroundTint="@color/gold"
                     android:hint="mm"
                     android:inputType="number"
-                    android:minHeight="48dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/expName" />
+                    android:minHeight="48dp"/>
                 <!--(Android, 2025)-->
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp">
                 <!--(Geeks For Geeks, 2025)-->
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="106dp"
                     android:layout_height="wrap_content"
+                    android:gravity="start"
                     android:text="End Month"
-                    android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:layout_marginEnd="60dp"/>
                 <EditText
                     android:id="@+id/month2"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_gold"
+                    android:backgroundTint="@color/gold"
                     android:hint="mm"
                     android:inputType="number"
-                    android:minHeight="48dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/expName" />
+                    android:minHeight="48dp"/>
                 <!--(Android, 2025)-->
                 <!--(Geeks For Geeks, 2025)-->
             </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:paddingStart="16dp">
+
+            <Button
+                android:id="@+id/addAll"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/gold"
+                android:text="Show All"/>
+
             <Button
                 android:id="@+id/addPeriod"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:backgroundTint="@color/gold"
+                android:text="Search Period"/>
+
+        </LinearLayout>
+
+            <Button
+                android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
-                android:layout_marginTop="18dp"
-                android:text="Enter Period"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputValue" />
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:backgroundTint="@color/dark_gold"
+                android:text="Cancel"/>
             <!--(Android, 2025)-->
 
             <TextView
                 android:id="@+id/grid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:text="Statistics"
                 android:textSize="20dp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/gold"/>
+
             <!--(Geeks For Geeks, 2025)-->
 
 

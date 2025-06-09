@@ -26,6 +26,7 @@ class Entry : AppCompatActivity() {
     //(Geeks For Geeks, 2025)
 
     private lateinit var expButton: Button
+    lateinit var backBtn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +43,7 @@ class Entry : AppCompatActivity() {
         //(Geeks For Geeks, 2025)
 
         expButton = findViewById(R.id.addExpense)
+        backBtn = findViewById(R.id.back)
         //(Geeks For Geeks, 2025)
 
 
@@ -50,9 +52,9 @@ class Entry : AppCompatActivity() {
             {
                 val  eName= expenseName.text.toString()
                 val eCost = expenseCost.text.toString().toFloatOrNull()
-                val  eDay= expenseDay.text.toString().toFloatOrNull()
-                val  eMonth= expenseMonth.text.toString().toFloatOrNull()
-                val  eYear= expenseYear.text.toString().toFloatOrNull()
+                val  eDay= expenseDay.text.toString().toIntOrNull()
+                val  eMonth= expenseMonth.text.toString().toIntOrNull()
+                val  eYear= expenseYear.text.toString().toIntOrNull()
                 val  eDesc= expenseDesc.text.toString()
                 val  eCate= expenseCate.text.toString()
                 //(Geeks For Geeks, 2025)
@@ -92,8 +94,10 @@ class Entry : AppCompatActivity() {
             //(Geeks For Geeks, 2025)
         }
 
-
-
+        backBtn.setOnClickListener {
+            val intent = Intent(this, mainMenu::class.java)
+            startActivity(intent)
+        }
     }
 
 }

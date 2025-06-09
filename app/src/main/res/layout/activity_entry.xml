@@ -5,11 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_gold"
+    android:elevation="4dp"
+    android:padding="16dp"
     tools:context=".Entry">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/green">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,89 +23,114 @@
             <!--(Geeks For Geeks, 2025)-->
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Expense Entry"
-                android:textSize="40dp"/>
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:shadowColor="@color/dark_gold"
+                android:shadowDy="2"
+                android:shadowDx="2"
+                android:shadowRadius="3"
+                android:paddingBottom="16dp"
+                android:textSize="40sp"/>
             <!--(Geeks For Geeks, 2025)-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="105dp"
                 android:layout_height="wrap_content"
+                android:gravity="start"
                 android:text="Name"
-                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
                 android:layout_marginEnd="60dp"/>
             <!--(Geeks For Geeks, 2025)-->
 
             <EditText
                 android:id="@+id/expName"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_gold"
+                android:backgroundTint="@color/gold"
                 android:hint="Rent"
-                android:minHeight="48dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:minHeight="48dp"/>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Price"
-                android:textSize="20dp"
-                android:layout_marginEnd="60dp"/>
-            <!--(Geeks For Geeks, 2025)-->
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp">
+
+                <TextView
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Price"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="60dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="R"
+                android:textColor="@color/white"
                 android:textSize="20dp"/>
             <!--(Geeks For Geeks, 2025)-->
 
             <EditText
                 android:id="@+id/expCost"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_gold"
+                android:backgroundTint="@color/gold"
                 android:hint="4000"
-                android:inputType="numberDecimal"
-                android:minHeight="48dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/expName" />
+                android:inputType="number"
+                android:minHeight="48dp"/>
         </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
+                    android:gravity="start"
                     android:text="Day"
-                    android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:layout_marginEnd="60dp"/>
                 <!--(Geeks For Geeks, 2025)-->
                 <EditText
                     android:id="@+id/expDay"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_gold"
+                    android:backgroundTint="@color/gold"
+                    android:inputType="number"
                     android:hint="dd"
-                    android:minHeight="48dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:minHeight="48dp"/>
 
 
 
@@ -109,116 +138,151 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
+                    android:gravity="start"
                     android:text="Month"
-                    android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:layout_marginEnd="60dp"/>
                 <!--(Geeks For Geeks, 2025)-->
 
                 <EditText
                     android:id="@+id/expMonth"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_gold"
+                    android:backgroundTint="@color/gold"
+                    android:inputType="number"
                     android:hint="mm"
-                    android:minHeight="48dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:minHeight="48dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
+                    android:gravity="start"
                     android:text="Year"
-                    android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:layout_marginEnd="60dp"/>
                 <!--(Geeks For Geeks, 2025)-->
 
                 <EditText
                     android:id="@+id/expYear"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_gold"
+                    android:backgroundTint="@color/gold"
+                    android:inputType="number"
                     android:hint="yyyy"
-                    android:minHeight="48dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:minHeight="48dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                >
+                android:paddingStart="16dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
-                    android:text="Desciption"
-                    android:textSize="20dp"
+                    android:gravity="start"
+                    android:text="Description"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:layout_marginEnd="60dp"/>
                 <!--(Geeks For Geeks, 2025)-->
 
                 <EditText
                     android:id="@+id/expDesc"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_gold"
+                    android:backgroundTint="@color/gold"
                     android:hint="Accomodation payment"
-                    android:minHeight="48dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:minHeight="48dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
+                    android:gravity="start"
                     android:text="Category"
-                    android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
                     android:layout_marginEnd="60dp"/>
                 <!--(Geeks For Geeks, 2025)-->
 
                 <EditText
                     android:id="@+id/expCate"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_gold"
+                    android:backgroundTint="@color/gold"
                     android:hint="Housing"
-                    android:minHeight="48dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:minHeight="48dp"/>
                 <!--(Android, 2025)-->
 
             </LinearLayout>
 
             <Button
                 android:id="@+id/addExpense"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="18dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:backgroundTint="@color/gold"
+                android:text="Add Entry"/>
+            <!--(Android, 2025)-->
+
+            <Button
+                android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
-                android:layout_marginTop="18dp"
-                android:text="Add Entry"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputValue" />
-            <!--(Android, 2025)-->
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:backgroundTint="@color/dark_gold"
+                android:text="Cancel"/>
+
+
 
 
         </LinearLayout>

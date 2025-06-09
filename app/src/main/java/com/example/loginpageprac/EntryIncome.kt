@@ -24,6 +24,7 @@ class EntryIncome : AppCompatActivity() {
     private lateinit var incomeDesc: EditText
     private lateinit var incomeCate: EditText
     private lateinit var incButton: Button
+    lateinit var backBtn : Button
     private val database = Firebase.database
     private val myRef = database.getReference("Income_Entry")
     //(Geeks FOr Geeks, 2025)
@@ -39,16 +40,17 @@ class EntryIncome : AppCompatActivity() {
         incomeDesc = findViewById(R.id.incDesc)
         incomeCate = findViewById(R.id.incCate)
         incButton = findViewById(R.id.addIncome)
+        backBtn = findViewById(R.id.back)
         //(Geeks FOr Geeks, 2025)
 
         incButton.setOnClickListener {
             try {
                 val iName = incomeName.text.toString()
                 val iCost = incomeCost.text.toString().toFloatOrNull()
-                val iDay= incomeDay.text.toString().toFloatOrNull()
-                val iMonth= incomeMonth.text.toString().toFloatOrNull()
+                val iDay= incomeDay.text.toString().toIntOrNull()
+                val iMonth= incomeMonth.text.toString().toIntOrNull()
                 //(Android, 2025)
-                val iYear= incomeYear.text.toString().toFloatOrNull()
+                val iYear= incomeYear.text.toString().toIntOrNull()
                 val iDesc= incomeDesc.text.toString()
                 val iCate= incomeCate.text.toString()
                 //(Geeks FOr Geeks, 2025)
@@ -95,6 +97,11 @@ class EntryIncome : AppCompatActivity() {
                 //(Kotlin, 2025)
                 //(Android, 2025)
             }
+        }
+
+        backBtn.setOnClickListener {
+            val intent = Intent(this, mainMenu::class.java)
+            startActivity(intent)
         }
 
     }

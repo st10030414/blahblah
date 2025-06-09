@@ -18,6 +18,7 @@ class Target : AppCompatActivity() {
     private lateinit var tarBtn: Button
     private val database = Firebase.database
     private val myRef = database.getReference("Target_Entry")
+    lateinit var backBtn : Button
     //(Geeks For Geeks, 2025)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,7 @@ class Target : AppCompatActivity() {
         targetName = findViewById(R.id.tarName)
         targetPrice = findViewById(R.id.tarPrice)
         tarBtn = findViewById(R.id.addTar)
+        backBtn = findViewById(R.id.back)
         //(Geeks For Geeks, 2025)
         //(Android, 2025)
 
@@ -49,12 +51,17 @@ class Target : AppCompatActivity() {
                 myRef.push().setValue(newExp).addOnSuccessListener {
                     Toast.makeText(this, "User details successfully entered!", Toast.LENGTH_SHORT).show()
                 }.addOnFailureListener {
-                    Toast.makeText(this, "User details successfully entered!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Failed to enter user details", Toast.LENGTH_SHORT).show()
                 }
                 val intent = Intent(this, mainMenu::class.java)
                 startActivity(intent)
             }
             //(W3Schools, 2025)
+        }
+
+        backBtn.setOnClickListener {
+            val intent = Intent(this, mainMenu::class.java)
+            startActivity(intent)
         }
 
     }
